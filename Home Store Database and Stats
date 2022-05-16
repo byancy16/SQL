@@ -30,7 +30,7 @@ ORDER BY rating;
 SELECT MAX(price), item FROM brisbungalow;
 
 --what is the minimum price and item in the store?
-SELECT MIN(price) FROM brisbungalow;
+SELECT MIN(price), item FROM brisbungalow;
 
 --what is the avg price of items in the store?
 SELECT AVG(rating) FROM brisbungalow;
