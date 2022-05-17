@@ -34,3 +34,8 @@ SELECT MIN(price), item FROM brisbungalow;
 
 --what is the avg price of items in the store?
 SELECT AVG(rating) FROM brisbungalow;
+
+--what are the top 5 highest rated items?
+SELECT item, rating FROM brisbungalow
+ORDER BY rating DESC
+LIMIT 5;
