@@ -1,41 +1,51 @@
 --create a store database
 
-CREATE TABLE brisbungalow (id INTEGER PRIMARY KEY, item TEXT, price NUMERIC, rating NUMERIC);
+CREATE TABLE brisbungalow (
+id INTEGER,
+name TEXT,
+price NUMERIC,
+rating NUMERIC);
 
-INSERT INTO brisbungalow VALUES (1, "Wall Decor", 50.00, 4.9);
-INSERT INTO brisbungalow VALUES (2, "Small Plants", 25.00, 4.5);
-INSERT INTO brisbungalow VALUES (3, "Furniture", 300.00, 5.0);
-INSERT INTO brisbungalow VALUES (4, "Decorative Pillows", 15.00, 4.6);
-INSERT INTO brisbungalow VALUES (5, "Wall Paint", 30.00, 4.0);
-INSERT INTO brisbungalow VALUES (6, "Shower Curtain", 20.00, 4.0);
-INSERT INTO brisbungalow VALUES (7, "Small Rugs", 25.00, 3.9);
-INSERT INTO brisbungalow VALUES (8, "Large Rugs", 75.00, 4.1);
-INSERT INTO brisbungalow VALUES (9, "Medium Plants", 50.00, 4.7);
-INSERT INTO brisbungalow VALUES (10, "Large Plants", 100.00, 5.0);
-INSERT INTO brisbungalow VALUES (11, "Bed Frames", 250.00, 4.8);
-INSERT INTO brisbungalow VALUES (12, "Bedding", 65.00, 3.9);
-INSERT INTO brisbungalow VALUES (13, "Dishes", 25.00, 4.0);
-INSERT INTO brisbungalow VALUES (14, "Patio", 35.00, 4.4);
-INSERT INTO brisbungalow VALUES (15, "For Pets", 20.00, 4.6);
+INSERT INTO brisbungalow VALUES
+(1, 'Wall Decor', 50, 4.9),
+(2, 'Small Plants', 25, 4.9),
+(3, 'Furniture', 300, 5.0),
+(4, 'Decorative Pillows', 15, 4.6),
+(5, 'Wall Paint', 30, 4.0),
+(6, 'Shower Curtain', 20, 4.0),
+(7, 'Small Rugs', 25, 2.9),
+(8, 'Large Rugs', 75, 4.1),
+(9, 'Medium Plants', 50, 4.7),
+(10, 'Large Plants', 100, 5.0),
+(11, 'Bed Frames', 250, 3.9),
+(12, 'Bedding', 65, 3.9),
+(13, 'Dishes', 25, 4.0),
+(14, 'Patio', 35, 4.4),
+(15, 'For Pets', 20, 4.6)
 
 --display the database ordered by price
-SELECT * FROM brisbungalow 
-ORDER BY price;
+SELECT *
+FROM brisbungalow
+ORDER BY price
 
 --display the database ordered by rating
-SELECT * FROM brisbungalow 
-ORDER BY rating;
+SELECT *
+FROM brisbungalow
+ORDER BY rating
 
---what is the maximum price and item name in the store?
-SELECT MAX(price), item FROM brisbungalow;
+--what is the maximum price in the store?
+SELECT MAX(price) 
+FROM brisbungalow
 
---what is the minimum price and item in the store?
-SELECT MIN(price), item FROM brisbungalow;
+--what is the minimum price in the store?
+SELECT MIN(price)
+FROM brisbungalow
 
 --what is the avg price of items in the store?
-SELECT AVG(rating) FROM brisbungalow;
+SELECT AVG(price)
+FROM brisbungalow
 
 --what are the top 5 highest rated items?
-SELECT item, rating FROM brisbungalow
+SELECT TOP 5 *
+FROM brisbungalow
 ORDER BY rating DESC
-LIMIT 5;
