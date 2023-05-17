@@ -8,4 +8,5 @@ INSERT INTO todo_list VALUES (3, "Learn some stuff on KA", 30);
 INSERT INTO todo_list VALUES (4, "Clean Litterbox", 5);
 
 --display total number of minutes it will take to complete all items in database
-SELECT SUM(minutes) FROM todo_list;
+SELECT SUM(minutes)
+FROM todo_list
