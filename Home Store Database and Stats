@@ -49,3 +49,13 @@ FROM brisbungalow
 SELECT TOP 5 *
 FROM brisbungalow
 ORDER BY rating DESC
+
+--what are the top 5 lowest priced items?
+SELECT TOP 5 *
+FROM brisbungalow
+ORDER BY price
+
+--customer comes in with a budget of $50, what items can they purchase?
+SELECT *
+FROM brisbungalow
+WHERE price < 50
