@@ -94,4 +94,17 @@ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
 WHERE JobTitle = 'Salesman'
 GROUP BY JobTitle
 
+UNION
+SELECT *
+FROM SQLTutorial.dbo.EmployeeDemographics
+UNION
+SELECT *
+FROM SQLTutorial.dbo.WareHouseEmployeeDemographics
+
+SELECT EmployeeID, FirstName, Age
+FROM SQLTutorial.dbo.EmployeeDemographics
+UNION
+SELECT EmployeeID, JobTitle, Salary
+FROM SQLTutorial.dbo.EmployeeSalary
+
 
