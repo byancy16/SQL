@@ -39,3 +39,59 @@ Insert Into EmployeeSalary VALUES
 (1007, 'Supplier Relations', 41000),
 (1008, 'Salesman', 48000),
 (1009, 'Accountant', 42000)
+
+Table 3 Query:
+Create Table WareHouseEmployeeDemographics 
+(EmployeeID int, 
+FirstName varchar(50), 
+LastName varchar(50), 
+Age int, 
+Gender varchar(50)
+)
+
+Table 3 Insert:
+Insert into WareHouseEmployeeDemographics VALUES
+(1013, 'Darryl', 'Philbin', NULL, 'Male'),
+(1050, 'Roy', 'Anderson', 31, 'Male'),
+(1051, 'Hidetoshi', 'Hasagawa', 40, 'Male'),
+(1052, 'Val', 'Johnson', 31, 'Female')
+
+
+
+-NULL VALUES
+Insert into EmployeeDemographics VALUES
+(1011, 'Ryan', 'Howard', 26, 'Male'),
+(NULL, 'Holly','Flax', NULL, 'Male'),
+(1013, 'Darryl', 'Philbin', NULL, 'Male')
+
+Insert into EmployeeSalary VALUES
+(1010, NULL, 47000),
+(NULL, 'Salesman', 43000)
+
+JOIN
+
+FULL OUTER JOIN
+
+LEFT OUTER JOIN
+
+RIGHT OUTER JOIN
+
+
+Robert California is pressuring Micahel Scott to meet his quarterly quota, which Michael is off by a couple thousand. Michael decides to deduct the amount needed to make his quota off the highest salary in the office, not including his own.
+SELECT EmployeeDemographics. EmployeeID, FirstName, LastName, Salary
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+JOIN [SQL Tutorial].dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+WHERE FirstName <> 'Michael'
+ORDER BY Salary DESC
+
+Angela Martin wants to calculate the average salary for the salesmen in the office
+
+SELECT JobTitle, AVG(Salary)
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+JOIN [SQL Tutorial].dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+WHERE JobTitle = 'Salesman'
+GROUP BY JobTitle
+
+
