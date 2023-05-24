@@ -4,22 +4,21 @@ CREATE TABLE customers (
     name TEXT,
     email TEXT);
     
-INSERT INTO customers (name, email) VALUES ("Doctor Who", "doctorwho@timelords.com");
-INSERT INTO customers (name, email) VALUES ("Harry Potter", "harry@potter.com");
-INSERT INTO customers (name, email) VALUES ("Captain Awesome", "captain@awesome.com");
+INSERT INTO customers (id,name, email) VALUES 
+(101, 'Doctor Who', 'doctorwho@timelords.com'),
+(102, 'Harry Potter', 'harry@potter.com'),
+(103, 'Captain Awesome', 'captain@awesome.com')
 
 CREATE TABLE orders (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     customer_id INTEGER,
     item TEXT,
-    price REAL);
-
-INSERT INTO orders (customer_id, item, price)
-    VALUES (1, "Sonic Screwdriver", 1000.00);
-INSERT INTO orders (customer_id, item, price)
-    VALUES (2, "High Quality Broomstick", 40.00);
-INSERT INTO orders (customer_id, item, price)
-    VALUES (1, "TARDIS", 1000000.00);
+    price REAL)
+    
+INSERT INTO orders VALUES
+(1001, 'Sonic Screwdriver', 1000.00),
+(1002, 'High Quality Broomstick', 40.00),
+(1003, 'TARDIS', 1000000.00)
     
 --display the name and email of every customer followed by the item and price of orders they've made
 SELECT customers.name, customers.email, orders.item, orders.price 
