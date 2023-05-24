@@ -1,30 +1,29 @@
 --create a customers and their orders database
 CREATE TABLE customers (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     name TEXT,
-    email TEXT);
+    email TEXT)
     
-INSERT INTO customers (id,name, email) VALUES 
+INSERT INTO customers VALUES 
 (101, 'Doctor Who', 'doctorwho@timelords.com'),
 (102, 'Harry Potter', 'harry@potter.com'),
 (103, 'Captain Awesome', 'captain@awesome.com')
 
 CREATE TABLE orders (
-    id INTEGER PRIMARY KEY,
-    customer_id INTEGER,
-    item TEXT,
-    price REAL)
+    id integer primary key,
+    name text,
+    price decimal(9,2))
     
 INSERT INTO orders VALUES
-(1001, 'Sonic Screwdriver', 1000.00),
-(1002, 'High Quality Broomstick', 40.00),
-(1003, 'TARDIS', 1000000.00)
+(101, 'Sonic Screwdriver', 1000.00),
+(102, 'High Quality Broomstick', 40.00),
+(103, 'TARDIS', 1000000.00)
     
 --display the name and email of every customer followed by the item and price of orders they've made
-SELECT customers.name, customers.email, orders.item, orders.price 
+SELECT customers.name, customers.email, orders.name, orders.price
  FROM customers
  LEFT OUTER JOIN orders
- ON customers.id = orders.customer_id;
+ ON customers.id = orders.id
  
  --display one row per each customer, with their name, email, and total amount of money they've spent on orders
  SELECT customers.name, customers.email, SUM(orders.price)
