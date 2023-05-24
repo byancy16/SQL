@@ -25,13 +25,4 @@ SELECT customers.name, email, orders.item, price
  LEFT OUTER JOIN orders
  ON customers.id = orders.id
  
- --display one row per each customer, with their name, email, and total amount of money they've spent on orders
 
- 
-
- 
- SELECT customers. id, name, email
-FROM [SQL Tutorial].dbo.customers
-UNION ALL
-SELECT orders. id, SUM(orders.price)
-FROM [SQL Tutorial].dbo.orders
