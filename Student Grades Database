@@ -1,9 +1,9 @@
 --create student grades database
 CREATE TABLE student_grades (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    number_grade INTEGER,
-    fraction_completed REAL);
+    id int,
+    name varchar(50),
+    number_grade int,
+    fraction_completed varchar(50))
     
 INSERT INTO student_grades (name, number_grade, fraction_completed)
     VALUES ("Winston", 90, 0.805);
