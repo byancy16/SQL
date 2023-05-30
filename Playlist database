@@ -1,9 +1,9 @@
 --create playlist database
 CREATE TABLE artists (
-    id INT,
-    name TEXT,
-    country TEXT,
-    genre TEXT)
+    id int,
+    name varchar(50),
+    country varchar(50),
+    genre varchar(50))
 
 INSERT INTO artists VALUES
 (1, 'Taylor Swift', 'US', 'Pop'),
@@ -21,8 +21,8 @@ INSERT INTO artists VALUES
 
 CREATE TABLE songs (
     id INT,
-    artist TEXT,
-    title TEXT);
+    artist varchar(50),
+    title varchar(50));
 
 INSERT INTO songs VALUES
 (1, 'Taylor Swift', 'Shake it off'),
@@ -48,5 +48,9 @@ FROM artists
 WHERE genre = 'Pop'
 
 --display the title of the songs from the "Pop" artists
-SELECT title FROM songs WHERE artist IN (
-    SELECT name FROM artists WHERE genre = 'Pop');
+SELECT title 
+FROM songs 
+WHERE artist IN (
+SELECT name 
+FROM artists 
+WHERE genre = 'Pop');
