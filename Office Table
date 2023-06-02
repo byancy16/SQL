@@ -68,13 +68,7 @@ Insert into EmployeeSalary VALUES
 (1010, NULL, 47000),
 (NULL, 'Salesman', 43000)
 
-JOIN
 
-FULL OUTER JOIN
-
-LEFT OUTER JOIN
-
-RIGHT OUTER JOIN
 
 
 Robert California is pressuring Micahel Scott to meet his quarterly quota, which Michael is off by a couple thousand. Michael decides to deduct the amount needed to make his quota off the highest salary in the office, not including his own.
@@ -94,13 +88,65 @@ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
 WHERE JobTitle = 'Salesman'
 GROUP BY JobTitle
 
-UNION
+
+--UNION
 SELECT *
 FROM SQLTutorial.dbo.EmployeeDemographics
 UNION
 SELECT *
 FROM SQLTutorial.dbo.WareHouseEmployeeDemographics
 
+--CASE STATEMENT
+SELECT firstname, lastname, age,
+CASE
+  WHEN Age > 30 THEN 'Older'
+ELSE 'Younder'
+END
+FROM SQLTutorial.dbo.EmployeeDemographics
+WHERE Age is NOT NULL
+ORDER BY Age
 
+Due to the Salesmen's outstanding performance selling paper this year, Michael Scott is allowed to give each employee a raise. Use a case statement to calculate what the salaries will be after the raise
+SELECT FirstName, LastName, JobTitle, Salary,
+CASE
+	WHEN JobTitle = 'Salesman' THEN Salary + (Salary * .10)
+	WHEN JobTitle = 'Accountant' THEN Salary + (Salary * .05)
+	WHEN JobTitle = 'HR' THEN Salary + (Salary * .000001)
+	ELSE Salary + (Salary * .03)
+END AS SalaryAfterRaise
+FROM SQLTutorial.dbo.EmployeeDemographics
+JOIN SQLTutorial.dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary. EmployeeID
 
+--HAVING STATEMENT
+Display the job titles that have more than one employee 
+SELECT JobTitle, Count(JobTitle)
+FROM SQLTutorial.dbo.EmployeeDemographics
+JOIN SQLTutorial.dbo.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+GROUP BY JobTitle
+HAVING COUNT(JobTitle) >1
 
+Kevin needs to figure out which employees in the office have a salary of over $45,000
+SELECT JobTitle, AVG(Salary)
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+JOIN [SQL Tutorial].dbo.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+GROUP BY JobTitle
+HAVING AVG(Salary) > 45000
+ORDER BY AVG(Salary)
+
+--UPDATE/DELETE
+While going over employee salaries, Angel Martin discovered Holly Flax's information wasn't complete.
+UPDATE SQLTutorial.dbo.EmployeeDemographics
+SET EmployeeID = 1012
+WHERE FirstName = 'Holly' AND LastName = 'Flax'
+
+UPDATE SQLTutorial.dbo.EmployeeDemographics
+SET Age = 31, Gender = 'Female'
+WHERE EmployeeID = 1012 
+
+Michael Scott has once again fired Toby Flenderson. He now wants Toby's information deleted.
+DELETE
+FROM [SQL Tutorial].dbo.EmployeeDemographics
+WHERE EmployeeID = 1005
