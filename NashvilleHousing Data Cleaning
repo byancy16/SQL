@@ -7,3 +7,19 @@ ADD SaleDateConverted Date;
 
 UPDATE NashvilleHousing
 SET SaleDateConverted = CONVERT(Date,SaleDate)
+
+--Populate Property Address data
+select a.parcelID, a.PropertyAddress, b.ParcelID, b.PropertyAddress, ISNULL(a.PropertyAddress,b.PropertyAddress)
+from PortfolioProject.dbo.NashvilleHousing a
+join PortfolioProject.dbo.NashvilleHousing b
+	on a.ParcelID = b.ParcelID
+	AND a.UniqueID <> b.UniqueID
+where a.PropertyAddress is null
+
+Update a
+SET PropertyAddress = ISNULL(a.PropertyAddress,b.PropertyAddress)
+from PortfolioProject.dbo.NashvilleHousing a
+join PortfolioProject.dbo.NashvilleHousing b
+	on a.ParcelID = b.ParcelID
+	AND a.UniqueID <> b.UniqueID
+	where a.PropertyAddress is null
