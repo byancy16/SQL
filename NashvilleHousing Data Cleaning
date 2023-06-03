@@ -1,0 +1,9 @@
+--Syandardaize Date Format
+select SaleDateConverted, CONVERT(Date,SaleDate)
+from PortfolioProject.dbo.NashvilleHousing
+
+ALTER TABLE NashvilleHousing
+ADD SaleDateConverted Date;
+
+UPDATE NashvilleHousing
+SET SaleDateConverted = CONVERT(Date,SaleDate)
